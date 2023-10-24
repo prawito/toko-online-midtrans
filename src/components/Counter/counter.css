@@ -1,0 +1,33 @@
+.action-product {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #cfd1ff;
+    padding: 8px;
+    border-radius: 7px;
+    margin: auto;
+    gap: 15px;
+  }
+  
+  .btn-counter {
+    background-color: #646cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .count-product {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }

@@ -1,0 +1,60 @@
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.transaction-status {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item .label {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.item .value {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    color: #333;
+}
+
+.item-product-status {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.item-product-status p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    color: #333;
+}
+
+.item-content {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.item-product-status p.bold {
+    font-weight: bold;
+}
+
+.empty-message {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}

@@ -1,0 +1,21 @@
+.header-container {
+  width: 100%;
+  background-color: #646cff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header-container .title {
+    width: 100%;
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.ic-back {
+  cursor: pointer;
+}

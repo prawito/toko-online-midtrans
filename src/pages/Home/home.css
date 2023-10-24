@@ -1,0 +1,118 @@
+.header-banner {
+    width: 100%;
+    height: 144px;
+    background-color: #646cff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .logo-title {
+    margin: 0;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .icon-check-order {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    object-fit: cover;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .item-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: calc(45% - 10px);
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    padding: 6px;
+    cursor: pointer;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-product {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 7px;
+  }
+  
+  .name-product {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .price-product {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #ff730f;
+  }
+  
+  .container {
+    position: relative;
+    padding-bottom: 60px;
+  }
+  
+  .floating-checkout {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: calc(400px - 40px);
+    height: 50px;
+    border-radius: 12px;
+    background-color: #2cca53;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  .floating-checkout .total-price {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .floating-checkout .total-price {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .floating-checkout .total-item {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+  }
