@@ -8,6 +8,7 @@ import { Layout } from "../../components/Layout";
 import { API_URL } from "../../utils/const";
 import { Product } from "./Product";
 import './checkout.css';
+import useSnap from "../../hooks/useSnap";
 
 function Checkout() {
     const navigate = useNavigate();
@@ -16,6 +17,8 @@ function Checkout() {
         name: '',
         email: ''
     });
+    const [snapShow, setSnapShow] = useState(false)
+    const {snapEmbed} = useSnap()
     
     const getCart = useCallback(async () => {
         const cart = await localStorage.getItem('cart')
@@ -56,7 +59,24 @@ function Checkout() {
         
         if(response && response.status === 'success') {
             await localStorage.removeItem('cart')
-            navigate(`/order-status?transaction_id=${response.data.id}`)
+            // navigate(`/order-status?transaction_id=${response.data.id}`)
+            setSnapShow(true)
+            snapEmbed(response.data.snap_token, 'snap-container', {
+                onSuccess: function (result) {
+                    console.log('success', result);
+                    navigate(`/order-status?transaction_id=${response.data.id}`)
+                    setSnapShow(false);
+                },
+                onPending: function(result){
+                    console.log('pending', result);
+                    navigate(`/order-status?transaction_id=${response.data.id}`)
+                    setSnapShow(false)
+                },
+                onClose: function () {
+                    navigate(`/order-status?transaction_id=${response.data.id}`)
+                    setSnapShow(false)
+                }
+            })
         } else if(response && response.status === 'error') {
             alert(response.errors.map((msg) => msg.msg).join(', '))
         }
@@ -69,23 +89,28 @@ function Checkout() {
     const totalOrder = cart.reduce((total, item) => total + (item.count * item.price), 0);
 
     return (
-        <Layout title="Checkout" onBack={() => navigate('/')}>
-            <p className="section-title">Detail Produk</p>
-            <div className="summary">
-                {cart.map((item) => (
-                    <Product key={item.id} item={item} />
-                ))}
-                <div className="item">
-                    <p>Total Order</p>
-                    <p>{numberToRupiah(totalOrder)}</p>
-                </div>
-            </div>
-            <p className="section-title">Detail Pelanggan</p>
-            <Input label="Nama Lengkap" value={customer.name} onChange={handleChange} name="name" />
-            <Input label="Email" value={customer.email} onChange={handleChange} name="email" />
-            <div className="action-pay">
-                <Button onClick={pay}>Bayar Sekarang</Button>
-            </div>
+        <Layout title="Checkout" onBack={() => navigate('/')} full={snapShow} noHeader={snapShow}>
+            {!snapShow && (
+                <>
+                    <p className="section-title">Detail Produk</p>
+                    <div className="summary">
+                        {cart.map((item) => (
+                            <Product key={item.id} item={item} />
+                        ))}
+                        <div className="item">
+                            <p>Total Order</p>
+                            <p>{numberToRupiah(totalOrder)}</p>
+                        </div>
+                    </div>
+                    <p className="section-title">Detail Pelanggan</p>
+                    <Input label="Nama Lengkap" value={customer.name} onChange={handleChange} name="name" />
+                    <Input label="Email" value={customer.email} onChange={handleChange} name="email" />
+                    <div className="action-pay">
+                        <Button onClick={pay}>Bayar Sekarang</Button>
+                    </div>
+                </>
+            )}
+            <div id="snap-container"></div>
         </Layout>
     );
 }
